@@ -24,14 +24,12 @@ public class JpaOrderRepository implements OrderRepository {
 
 
     @Override
-    @Transactional
     public void save(Order order) {
         OrderEntity entity = OrderEntity.fromDomain(order);
         jpaRepository.save(entity);
     }
 
     @Override
-    @Transactional
     public Order findById(OrderId orderId) {
         OrderEntity entity = jpaRepository.findById(orderId.value()).orElseThrow(() -> new OrderNotFoundException(orderId));
         return entity.toDomain();

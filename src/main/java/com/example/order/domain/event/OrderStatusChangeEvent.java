@@ -1,11 +1,16 @@
 package com.example.order.domain.event;
 
+import lombok.Data;
+
+import java.time.LocalDateTime;
+
 /**
  * version : 1.0
  * author : JUNSEOB
  */
-public record OrderStatusChangeEvent(
-        String orderId,
-        String orderStatus
-) implements DomainEvent {
+@Data
+public class OrderStatusChangeEvent extends DomainEvent {
+    public OrderStatusChangeEvent(String orderId, String orderStatus, LocalDateTime occurredAt) {
+        super(orderId, orderStatus, occurredAt);
+    }
 }

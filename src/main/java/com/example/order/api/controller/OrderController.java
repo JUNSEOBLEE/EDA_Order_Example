@@ -1,8 +1,8 @@
-package com.example.order.ui.controller;
+package com.example.order.api.controller;
 
 import com.example.order.application.service.OrderService;
 import com.example.order.domain.model.Order;
-import com.example.order.ui.dto.OrderDto;
+import com.example.order.dto.OrderDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +24,7 @@ public class OrderController {
 
     @PostMapping("/create")
     public ResponseEntity<?> createOrder(@RequestBody OrderDto orderDto) {
-        Order order = orderService.createOrder(orderDto.toDomain());
+        Order order = orderService.createOrder(orderDto);
         return ResponseEntity.ok(order);
     }
 

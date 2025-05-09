@@ -1,4 +1,4 @@
-package com.example.order.ui.dto;
+package com.example.order.dto;
 
 import com.example.order.domain.model.*;
 
@@ -24,7 +24,7 @@ public record OrderDto(
                 new OrderId(UUID.randomUUID().toString()),
                 new CustomerId(customerId),
                 OrderStatus.CREATED,
-                orderLines.stream().map(line -> new OrderLine(line.productId, line.quantity)).collect(Collectors.toList())
+                orderLines.stream().map(line -> new Order.OrderLine(line.productId, line.quantity)).collect(Collectors.toList())
         );
     }
 }

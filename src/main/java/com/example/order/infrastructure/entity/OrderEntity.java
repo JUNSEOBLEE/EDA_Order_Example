@@ -45,14 +45,14 @@ public class OrderEntity {
 
     public static OrderEntity fromDomain(Order order) {
         List<OrderLineEntity> lines = order.getOrderLines().stream()
-                .map(line -> new OrderLineEntity(line.getProductId(), line.getQuantity()))
+                .map(line -> new OrderLineEntity(line.productId(), line.quantity()))
                 .collect(Collectors.toList());
         return new OrderEntity(order.getOrderId().value(), order.getCustomerId().value(), order.getOrderStatus(), lines);
     }
 
     public Order toDomain() {
-        List<OrderLine> lines = orderLines.stream()
-                .map(entity -> new OrderLine(entity.getProductId(), entity.getQuantity()))
+        List<Order.OrderLine> lines = orderLines.stream()
+                .map(entity -> new Order.OrderLine(entity.getProductId(), entity.getQuantity()))
                 .collect(Collectors.toList());
         return new Order(new OrderId(id), new CustomerId(customerId), status, lines);
     }
