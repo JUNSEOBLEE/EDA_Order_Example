@@ -69,7 +69,6 @@ public class OrderService {
     }
 
     public List<Order> selectOrderList(String customerId) {
-        List<Order> orderList = orderRepository.findAllByCustomerId(customerId);
-        return orderList;
+        return orderRepository.findAllByCustomerId(customerId);
     }
 }

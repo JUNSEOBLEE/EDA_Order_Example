@@ -39,7 +39,7 @@ public class JpaOrderRepository implements OrderRepository {
     public List<Order> findAllByCustomerId(String customerId) {
         List<OrderEntity> orderEntities = jpaRepository.findAllByCustomerId(customerId);
         return orderEntities.stream()
-                .map(entity -> entity.toDomain())
+                .map(OrderEntity::toDomain)
                 .toList();
     }
 }
